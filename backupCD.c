@@ -6,7 +6,7 @@
 #include <string.h>
 #include <windows.h>
 
-struct infoCampos { // Dados
+struct infoCampos {
 
     char nome[60];
     int dia;
@@ -43,7 +43,7 @@ struct diagnostico {
     int mes;
     char mesS[3];
     int ano;
-    char anoC[5];//VALIDADO
+    char anoC[5];
 };
 
 struct user{
@@ -72,9 +72,9 @@ int main(){
     setlocale(LC_ALL,"Portuguese");
         cadLogin();
 
-}//Fim main
+}
 
-int i; //Itera��o for
+int i;
 
 
 
@@ -99,7 +99,7 @@ void cadastro (void){
     int opCadNtelefone;
 
     system("cls");
-    printf("\n******************DADOS PESSOAIS*******************\n");
+    printf("\n******************Dados Pessoais*******************\n");
     printf("\n---------------------------------------------------");
 	
 	
@@ -108,7 +108,7 @@ void cadastro (void){
     pontCadCpf = fopen ("cpf.txt","a");
     rCpf:
 	
-    printf("\nDigite os 11 n�meros do cpf sem ponto e tra�o\n");
+    printf("\nDigite o CPF.\n");
     printf("\nCPF: ");
 	
     fflush(stdin);
@@ -120,7 +120,7 @@ void cadastro (void){
 
     for(i=0; i<cadCpf.cpfC[i]; i++) {
         if(!(cadCpf.cpfC[i]>='0' && cadCpf.cpfC[i]<='9' && strlen(cadCpf.cpfC)==11)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida***\n");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rCpf;
             break;
         }
@@ -142,7 +142,7 @@ void cadastro (void){
         consulta = fopen ("cpf.txt","r");
         while((fscanf(consulta,"%s",&login)) !=EOF){
                 if (strcmp(cadCpf.cpfC,login ) == 0){
-                    printf("\n\n***J� consta no sistema um cadastro com esse n�mero de cpf***\n");
+                    printf("\n\n CPF já Cadastrado.\n");
                     goto rCpf;
                     fclose(consulta);
                     break;
@@ -152,7 +152,7 @@ void cadastro (void){
             fclose(pontCadCpf);
 
     rNome:
-    printf("\n�NOME: ");
+    printf("\nNOME: ");
     gets(dados.nome);
 
      if(strlen(dados.nome) == 0){
@@ -163,14 +163,14 @@ void cadastro (void){
     for(i=0; i<dados.nome[i];i++){
             fflush(stdin);
              if (dados.nome[i] == ' '){
-                    dados.nome[i] = '�';
+                    dados.nome[i] = 'a';
                 } if(dados.nome[i] >= 'a' && dados.nome[i] <= 'z' || dados.nome[i] >= 'A' && dados.nome[i] <= 'Z' || dados.nome[i] == '�'){
-                    if(dados.nome[i] == '�'){
+                    if(dados.nome[i] == 'a'){
                             dados.nome[i] = ' ';
                     }
                     }else
                     {
-                        printf("\n***Caracter inv�lido. \nInforme apenas letras***");
+                        printf("\nCaracter invalido.");
                         goto rNome;
                         break;
                 }
@@ -178,7 +178,7 @@ void cadastro (void){
 //fim for
     printf("---------------------------------------------------");
 
-    printf("\n�DATA DE NASCIMENTO");
+    printf("\n Data de Nascimento");
     rDiaNascimento:
     printf("\n    =>DIA dd : ");
     fflush(stdin);
@@ -193,7 +193,7 @@ void cadastro (void){
 
     for(i=0; i<dados.diaS[i]; i++) {
         if(!(dados.diaS[i]>='0' && dados.diaS[i]<='9' && strlen(dados.diaS)==2)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida***\n");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rDiaNascimento;
             break;
         }
@@ -202,7 +202,7 @@ void cadastro (void){
         }
     }
     rMesNascimento:
-    printf("          =>M�S mm : ");
+    printf("          =>Mes mm : ");
     fflush(stdin);
     gets(dados.mesS);
 
@@ -212,7 +212,7 @@ void cadastro (void){
 
     for(i=0; i<dados.mesS[i]; i++) {
         if(!(dados.mesS[i]>='0' && dados.mesS[i]<='9' && strlen(dados.mesS)==2)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rMesNascimento;
             break;
         }
@@ -233,7 +233,7 @@ void cadastro (void){
     printf("---------------------------------------------------");
     for(i=0; i<dados.anoC[i]; i++) {
         if(!(dados.anoC[i]>='0' && dados.anoC[i]<='9' && strlen(dados.anoC)==4)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rAnoNascimento;
             break;
         }
@@ -310,7 +310,7 @@ void cadastro (void){
 
     for(i=0; i<data.diaS[i]; i++) {
         if(!(data.diaS[i]>='0' && data.diaS[i]<='9' && strlen(data.diaS)==2)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rDiaMorb;
             break;
         }
@@ -330,7 +330,7 @@ void cadastro (void){
 
         for(i=0; i<data.mesS[i]; i++) {
         if(!(data.mesS[i]>='0' && data.mesS[i]<='9' && strlen(data.mesS)==2)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rMesMorb;
             break;
         }
@@ -350,7 +350,7 @@ void cadastro (void){
 
     for(i=0; i<data.anoC[i]; i++) {
         if(!(data.anoC[i]>='0' && data.anoC[i]<='9' && strlen(data.anoC)==4)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rAnoMorb;
             break;
         }
@@ -405,7 +405,7 @@ void cadastro (void){
     printf("---------------------------------------------------");
     for(i=0; i<dados.numeroC[i]; i++) {
         if(!(dados.numeroC[i]>='0' && dados.numeroC[i]<='9'&& strlen(dados.numeroC)<11)){
-            printf("\n***Inv�lido. \nVerifique se digitou apenas numeros \n e se n�o excedeu ou n�o atingiu a quantidade permitida\n***");
+            printf("\nInvalido. Tente Novamente!\n");
                 goto rNumero;
             break;
         }
