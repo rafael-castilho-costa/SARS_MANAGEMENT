@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1680641168 source:c:\users\rafaelcastilho\onedrive - blue\Área de trabalho\pim - unip\sars_management\sars_management\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<conio.h>
+	<ctype.h>
+	<string.h>
+	<windows.h>
+
